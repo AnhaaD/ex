@@ -1,0 +1,12 @@
+html.theme-dark .group-wWM3zP_M- {
+  background-color: var(--trading-view-background);
+}
+
+html.theme-dark .chart-page .chart-container {
+  background-color: var(--trading-view-background);
+  border: var(--trading-view-border-color);
+}
+
+html.feature-no-touch.theme-dark .chart-controls-bar-buttons a:not(.disabled):hover {
+  background: var(--trading-view-border-color);
+}
