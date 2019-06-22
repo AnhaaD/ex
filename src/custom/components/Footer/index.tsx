@@ -29,12 +29,8 @@ class FooterComponent extends React.Component {
                                                 <li className="footer-nav__item">
                                                     <Link to="/markets" className="footer-nav__link">Markets</Link>
                                                 </li>
-                                                <li className="footer-nav__item">
-                                                    <Link to="/leaderboard" className="footer-nav__link">Leaderboards</Link>
-                                                </li>
-                                                <li className="footer-nav__item">
-                                                    <a href="https://streamex.zendesk.com/hc/en-us/articles/360006038479-Trading-Fees" target="_blank" className="footer-nav__link">Fees</a>
-                                                </li>
+                                               {/* <li className="footer-nav__item"><Link to="/leaderboard" className="footer-nav__link">Leaderboards</Link></li>*/}
+                                               {/* <li className="footer-nav__item"><a href="https://streamex.zendesk.com/hc/en-us/articles/360006038479-Trading-Fees" target="_blank" className="footer-nav__link">Fees</a></li>*/}
                                             </ul>
                                         </div>
                                     </div>
@@ -50,18 +46,14 @@ class FooterComponent extends React.Component {
                                     <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <div className="card-body">
                                             <ul className="footer-nav">
-                                                <li className="footer-nav__item">
-                                                    <a href="https://streamex.zendesk.com/hc/en-us/categories/360001244999-FAQ" target="_blank" className="footer-nav__link">FAQ</a>
-                                                </li>
+                                                {/*<li className="footer-nav__item"><a href="https://streamex.zendesk.com/hc/en-us/categories/360001244999-FAQ" target="_blank" className="footer-nav__link">FAQ</a></li>*/}
                                                 <li className="footer-nav__item">
                                                     <Link to="/privacy-policy" className="footer-nav__link">Privacy Policy</Link>
                                                 </li>
                                                 <li className="footer-nav__item">
                                                     <Link to="/terms-and-conditions" className="footer-nav__link">Terms and Conditions</Link>
                                                 </li>
-                                                <li className="footer-nav__item">
-                                                    <a href="https://streamex.zendesk.com/hc/en-us" target="_blank" className="footer-nav__link">Support</a>
-                                                </li>
+                                                {/*<li className="footer-nav__item"><a href="https://streamex.zendesk.com/hc/en-us" target="_blank" className="footer-nav__link">Support</a></li>*/}
                                             </ul>
                                         </div>
                                     </div>
@@ -78,22 +70,22 @@ class FooterComponent extends React.Component {
                                         <div className="card-body">
                                             <ul className="footer-soc">
                                                 <li className="footer-soc__item">
-                                                    <a href="https://twitter.com/STREAMEXio" target="_blank" className="footer-soc__link">
+                                                    <a href="#" target="_blank" className="footer-soc__link">
                                                         <span className="footer-soc__link-icon icon-twitter"/>
                                                     </a>
                                                 </li>
                                                 <li className="footer-soc__item">
-                                                    <a href="https://www.facebook.com/streamex.io" target="_blank" className="footer-soc__link">
+                                                    <a href="#" target="_blank" className="footer-soc__link">
                                                         <span className="footer-soc__link-icon icon-facebook"/>
                                                     </a>
                                                 </li>
                                                 <li className="footer-soc__item">
-                                                    <a href="https://t.me/streamexgroup" target="_black" className="footer-soc__link">
+                                                    <a href="#" target="_black" className="footer-soc__link">
                                                         <span className="footer-soc__link-icon icon-mail"/>
                                                     </a>
                                                 </li>
                                                 <li className="footer-soc__item">
-                                                    <a href="https://t.me/streamexio" target="_black" className="footer-soc__link">
+                                                    <a href="#" target="_black" className="footer-soc__link">
                                                         <span className="footer-soc__link-icon icon-mail" />
                                                     </a>
                                                 </li>
@@ -114,12 +106,8 @@ class FooterComponent extends React.Component {
                                 <li className="footer-nav__item">
                                     <Link to="/markets" className="footer-nav__link">Markets</Link>
                                 </li>
-                                <li className="footer-nav__item">
-                                    <Link to="/leaderboard" className="footer-nav__link">Leaderboards</Link>
-                                </li>
-                                <li className="footer-nav__item">
-                                    <a href="https://streamex.zendesk.com/hc/en-us/articles/360006038479-Trading-Fees" target="_blank" className="footer-nav__link">Fees</a>
-                                </li>
+                                {/*<li className="footer-nav__item"><Link to="/leaderboard" className="footer-nav__link">Leaderboards</Link></li>*/}
+                                {/*<li className="footer-nav__item"><a href="https://streamex.zendesk.com/hc/en-us/articles/360006038479-Trading-Fees" target="_blank" className="footer-nav__link">Fees</a></li>*/}
                             </ul>
                         </div>
                         <div className="col-xl-2 col-lg-2 col-md-4 col-sm-4 d-sm-block d-none">
@@ -127,47 +115,43 @@ class FooterComponent extends React.Component {
                                 <li className="footer-nav__item">
                                     <span className="footer-title">Help</span>
                                 </li>
-                                <li className="footer-nav__item">
-                                    <a href="https://streamex.zendesk.com/hc/en-us/categories/360001244999-FAQ" target="_blank" className="footer-nav__link">FAQ</a>
-                                </li>
+                                {/*<li className="footer-nav__item"><a href="https://streamex.zendesk.com/hc/en-us/categories/360001244999-FAQ" target="_blank" className="footer-nav__link">FAQ</a></li>*/}
                                 <li className="footer-nav__item">
                                     <Link to="/privacy-policy" className="footer-nav__link">Privacy Policy</Link>
                                 </li>
                                 <li className="footer-nav__item">
                                     <Link to="/terms-and-conditions" className="footer-nav__link">Terms and Conditions</Link>
                                 </li>
-                                <li className="footer-nav__item">
-                                    <a href="https://streamex.zendesk.com/hc/en-us" target="_blank" className="footer-nav__link">Support</a>
-                                </li>
+                                {/*<li className="footer-nav__item"><a href="https://streamex.zendesk.com/hc/en-us" target="_blank" className="footer-nav__link">Support</a></li>*/}
                             </ul>
                         </div>
                         <div className="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12 d-sm-block d-none">
                             <span className="footer-title">Connect</span>
                             <ul className="footer-soc">
                                 <li className="footer-soc__item">
-                                    <a href="https://twitter.com/STREAMEXio" target="_blank" className="footer-soc__link">
+                                    <a href="#" target="_blank" className="footer-soc__link">
                                         <span className="footer-soc__link-icon icon-twitter" />
                                     </a>
                                 </li>
                                 <li className="footer-soc__item">
-                                    <a href="https://www.facebook.com/streamex.io" target="_blank" className="footer-soc__link">
+                                    <a href="#" target="_blank" className="footer-soc__link">
                                         <span className="footer-soc__link-icon icon-facebook" />
                                     </a>
                                 </li>
                                 <li className="footer-soc__item">
-                                    <a href="https://t.me/streamexgroup" target="_black" className="footer-soc__link">
+                                    <a href="#" target="_black" className="footer-soc__link">
                                         <span className="footer-soc__link-icon icon-mail"/>
                                     </a>
                                 </li>
                                 <li className="footer-soc__item">
-                                    <a href="https://t.me/streamexio" target="_black" className="footer-soc__link">
+                                    <a href="#" target="_black" className="footer-soc__link">
                                         <span className="footer-soc__link-icon icon-mail" />
                                     </a>
                                 </li>
                             </ul>
                         </div>
                         <div className="col-12">
-                            <p className="footer-copyright">© 2018 - 2019 Streamex.io. All rights reserved</p>
+                            <p className="footer-copyright">© 2018 - 2019 Libra Exchange. All rights reserved</p>
                         </div>
                     </div>
                 </div>

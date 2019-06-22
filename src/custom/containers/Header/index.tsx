@@ -1,14 +1,7 @@
 import classnames from 'classnames';
 import * as React from 'react';
-import {
-    connect,
-    MapDispatchToPropsFunction,
-    MapStateToProps,
-} from 'react-redux';
-import {
-    Link,
-    withRouter,
-} from 'react-router-dom';
+import {connect, MapDispatchToPropsFunction, MapStateToProps } from 'react-redux';
+import {Link, withRouter } from 'react-router-dom';
 import {
     changeColorTheme,
     changeLanguage,
@@ -16,9 +9,9 @@ import {
     selectCurrentColorTheme,
     selectCurrentLanguage,
 } from '../../../modules';
-import { CloseIcon, OpenIcon } from '../../assets/images/NavBarIcons';
-import { Logo } from '../../assets/images/StreamexLogo';
-import { NavBar } from '../NavBar';
+import {Logo} from '../../assets/images/Logo';
+import {CloseIcon, OpenIcon} from '../../assets/images/NavBarIcons';
+import {NavBar} from '../NavBar';
 import moon = require('../NavBar/moon.svg');
 import sun = require('../NavBar/sun.svg');
 
@@ -57,8 +50,8 @@ class Head extends React.Component<Props, HeaderState> {
     }
 
     public render() {
-        const { colorTheme, lang } = this.props;
-        const { isActive, isOpenLanguage } = this.state;
+        const {colorTheme, lang} = this.props;
+        const {isActive, isOpenLanguage} = this.state;
 
         const languageName = this.getLanguageName(lang);
         const languageClassName = classnames('dropdown-menu-language-field', {
@@ -68,40 +61,42 @@ class Head extends React.Component<Props, HeaderState> {
         return (
             <React.Fragment>
                 {!['/confirm'].some(r => location.pathname.includes(r)) &&
-                    <header className={`pg-header ${isActive ? 'pg-header--active' : ''}`}>
-                        <div className="pg-container pg-header__content">
-                            <Link to="/wallets" onClick={() => this.handleRemoveLightMode()} className="pg-header__logo">
-                                <div className="pg-logo">
-                                    {colorTheme === 'light' ? <Logo fillColor="#2f2854"/> : <Logo fillColor="white"/>}
-                                </div>
-                            </Link>
-                            <NavBar onLinkChange={this.closeMenu}/>
-                            <div
-                                onClick={this.toogleMenu}
-                                className="pg-header__toggler"
-                            >
-                                <span className="pg-header__toggler-item"/>
-                                <span className="pg-header__toggler-item"/>
-                                <span className="pg-header__toggler-item"/>
-                            </div>
-                            <div className="pg-header__mobile-menu">
-                                <div className="pg-navbar__content__switcher d-inline-block">
-                                    {this.getLightDarkMode()}
-                                </div>
-                                <div className="btn-group pg-navbar__header-settings__account-dropdown dropdown-toggle dropdown-menu-language-container d-inline-block">
-                                    <div onClick={this.toggleLanguageMenu} className={languageClassName}>
-                                        {languageName}
-                                        {colorTheme === 'light' ? (
-                                            isOpenLanguage ? <span className="icon"><OpenIcon fillColor="#6e6987" /></span> : <span className="icon"><CloseIcon fillColor="#657395" /></span>
-                                        ) : (
-                                            isOpenLanguage ? <span className="icon"><OpenIcon fillColor="white" /></span> : <span className="icon"><CloseIcon fillColor="#657395" /></span>
-                                        )}
-                                    </div>
-                                    {isOpenLanguage ? this.getLanguageMenu() : null}
-                                </div>
-                            </div>
+                <header className={`pg-header ${isActive ? 'pg-header--active' : ''}`}>
+                  <div className="pg-container pg-header__content">
+                    <Link to="/wallets" onClick={() => this.handleRemoveLightMode()} className="pg-header__logo">
+                      <div className="pg-logo">
+                          {colorTheme === 'light' ? <Logo fillColor="#2f2854"/> : <Logo fillColor="white"/>}
+                      </div>
+                    </Link>
+                    <NavBar onLinkChange={this.closeMenu}/>
+                    <div
+                      onClick={this.toogleMenu}
+                      className="pg-header__toggler"
+                    >
+                      <span className="pg-header__toggler-item"/>
+                      <span className="pg-header__toggler-item"/>
+                      <span className="pg-header__toggler-item"/>
+                    </div>
+                    <div className="pg-header__mobile-menu">
+                      <div className="pg-navbar__content__switcher d-inline-block">
+                          {this.getLightDarkMode()}
+                      </div>
+                      <div className="btn-group pg-navbar__header-settings__account-dropdown dropdown-toggle dropdown-menu-language-container d-inline-block">
+                        <div onClick={this.toggleLanguageMenu} className={languageClassName}>
+                            {languageName}
+                            {colorTheme === 'light' ? (
+                                isOpenLanguage ? <span className="icon"><OpenIcon fillColor="#6e6987"/></span> :
+                                    <span className="icon"><CloseIcon fillColor="#657395"/></span>
+                            ) : (
+                                isOpenLanguage ? <span className="icon"><OpenIcon fillColor="white"/></span> :
+                                    <span className="icon"><CloseIcon fillColor="#657395"/></span>
+                            )}
                         </div>
-                    </header>
+                          {isOpenLanguage ? this.getLanguageMenu() : null}
+                      </div>
+                    </div>
+                  </div>
+                </header>
                 }
             </React.Fragment>
         );
@@ -160,14 +155,14 @@ class Head extends React.Component<Props, HeaderState> {
         if (colorTheme === 'dark') {
             return (
                 <div className="pg-navbar__content__switcher-item" onClick={e => this.handleChangeCurrentStyleMode('light')}>
-                    <img src={moon} />
+                    <img src={moon}/>
                 </div>
             );
         }
 
         return (
             <div className="pg-navbar__content__switcher-item" onClick={e => this.handleChangeCurrentStyleMode('dark')}>
-                <img src={sun} />
+                <img src={sun}/>
             </div>
         );
     };

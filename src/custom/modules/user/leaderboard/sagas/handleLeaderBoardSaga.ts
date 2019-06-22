@@ -13,7 +13,7 @@ const leaderboardOptions: RequestOptions = {
 
 export function* leaderBoardFetchSaga(action: LeaderBoardFetch) {
     try {
-        const users = yield call(API.get(leaderboardOptions), `/public/performance?period=daily`);
+        const users = yield call(API.get(leaderboardOptions), '/public/performance');
         yield put(leaderboardData(users));
     } catch (error) {
         yield put(alertPush({message: error.message, code: error.code, type: 'error'}));

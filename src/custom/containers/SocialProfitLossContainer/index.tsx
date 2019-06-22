@@ -38,7 +38,6 @@ class SocialProfitLoss extends React.Component<SocialProfitLossProps, SocialProf
 
     public render() {
         const { activeChart } = this.props;
-        const { profitAmount } = this.state;
 
         const dailyItemStyles = classnames('pg-profit-loss__header-content-switcher-block-item px-3 py-1', {
             active: activeChart === 'daily',
@@ -51,14 +50,6 @@ class SocialProfitLoss extends React.Component<SocialProfitLossProps, SocialProf
         const monthlyItemStyles = classnames('pg-profit-loss__header-content-switcher-block-item px-3 py-1', {
             active: activeChart === 'monthly',
         });
-
-        const chartNamesStyles = {
-            marginTop: `${(profitAmount - 1) * 100 + 10}px`,
-        };
-
-        const middleBlockNumberStyles = {
-            padding: `${(profitAmount - 1) * 100 + 90}px 0 90px 0`,
-        };
 
         return (
             <div className="col-12 pg-profit-loss">
@@ -85,32 +76,57 @@ class SocialProfitLoss extends React.Component<SocialProfitLossProps, SocialProf
                         </div>
                     </div>
                 </div>
-                <div className="row col-12 pg-profit-loss__content my-5">
-                    <div className="col-1 mx-0 px-0">
-                        <div className="col-12 mx-0 px-0">
-                            {profitAmount * 100}%
-                        </div>
-                        <div className="col-12 mx-0 px-0 col-12">
-                            <div className="pg-profit-loss__content-middle-block-number" style={middleBlockNumberStyles}>
-                                0
-                            </div>
-                        </div>
-                        <div className="col-12 mx-0 px-0">
-                            -100%
-                        </div>
-                    </div>
-                    <div className="col-11 mx-0 px-0 mt-4">
-                        <div className="pg-profit-loss__content-chart pg-profit-loss__content-middle-block">
-                            {this.getChartCandles()}
-                        </div>
-                        <div className="pg-profit-loss__content-chart-names" style={chartNamesStyles}>
-                            {this.getChartNames()}
-                        </div>
-                    </div>
+                <div className="row col-12 pg-profit-loss__content">
+                    {this.getProfitLossChart()}
                 </div>
             </div>
         );
     }
+
+    private getProfitLossChart = () => {
+        const { data } = this.props;
+        const { profitAmount } = this.state;
+
+        const chartNamesStyles = {
+            marginTop: `${(profitAmount - 1) * 100 + 10}px`,
+        };
+
+        const middleBlockNumberStyles = {
+            padding: `${(profitAmount - 1) * 100 + 90}px 0 90px 0`,
+        };
+
+        if (!data) {
+            return (
+                <div className="mt-2 mb-4">No data yet</div>
+            );
+        }
+
+        return (
+            <div className="row col-12 my-5">
+                <div className="col-1 mx-0 px-0">
+                    <div className="col-12 mx-0 px-0">
+                        {profitAmount * 100}%
+                    </div>
+                    <div className="col-12 mx-0 px-0 col-12">
+                        <div className="pg-profit-loss__content-middle-block-number" style={middleBlockNumberStyles}>
+                            0
+                        </div>
+                    </div>
+                    <div className="col-12 mx-0 px-0">
+                        -100%
+                    </div>
+                </div>
+                <div className="col-11 mx-0 px-0 mt-4">
+                    <div className="pg-profit-loss__content-chart pg-profit-loss__content-middle-block">
+                        {this.getChartCandles()}
+                    </div>
+                    <div className="pg-profit-loss__content-chart-names" style={chartNamesStyles}>
+                        {this.getChartNames()}
+                    </div>
+                </div>
+            </div>
+        );
+    };
 
     private getChartCandles = () => {
         const { data } = this.props;

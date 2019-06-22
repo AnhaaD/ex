@@ -1,9 +1,9 @@
 // tslint:disable-next-line: no-submodule-imports
 import { call, put } from 'redux-saga/effects';
 import { API, RequestOptions } from '../../../../../api';
-import { alertPush } from '../../../../../modules';
 import {
     subscriptionsData,
+    subscriptionsError,
     SubscriptionsFetch,
 } from '../actions';
 
@@ -21,17 +21,17 @@ export function* subscriptionsSaga(action: SubscriptionsFetch) {
             return {
                 ...user,
                 performances: {
-                    d1: user.performances['1d'],
-                    d7: user.performances['7d'],
-                    d30: user.performances['30d'],
-                    d90: user.performances['90d'],
+                    d1: user.performances.d1,
+                    d7: user.performances.d7,
+                    d30: user.performances.d30,
+                    d90: user.performances.d90,
                 },
             };
         });
 
         yield put(subscriptionsData({ list: newUsers, limit, page: page + 1, total: headers.total }));
     } catch (error) {
-        yield put(alertPush({message: error.message, code: error.code, type: 'error'}));
+        yield put(subscriptionsError({message: error.message, code: error.code}));
     }
 }
 

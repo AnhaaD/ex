@@ -35,26 +35,40 @@ class SocialPortfolioRepartition extends React.Component<SocialPortfolioRepartit
 
     public render() {
         return (
-            <div className="col-12 pg-portfolio-repartition px-0 my-5">
+            <div className="col-12 pg-portfolio-repartition px-0 mb-5">
                 <div className="col-12 pg-portfolio-repartition__header">
                     Portfolio Repartition
                 </div>
                 <div className="col-12 pg-portfolio-repartition__content row">
-                    <div className="col col-md-6">
-                        <div className="pg-portfolio-repartition__content-table col-12 row">
-                            <div className="col-12 row pg-portfolio-repartition__content-table-head">
-                                {this.getHeaders()}
-                            </div>
-                            {this.getRows()}
-                        </div>
-                    </div>
-                    <div className="col col-md-6">
-                        {this.getChart()}
-                    </div>
+                    {this.getBody()}
                 </div>
             </div>
         );
     }
+
+    private getBody = () => {
+        const { data } = this.props;
+
+        if (!data.length) {
+            return (<div className="col mt-2 mb-4">No data yet</div>);
+        }
+
+        return (
+            <React.Fragment>
+                <div className="col col-md-6">
+                    <div className="pg-portfolio-repartition__content-table col-12 row">
+                        <div className="col-12 row pg-portfolio-repartition__content-table-head">
+                            {this.getHeaders()}
+                        </div>
+                        {this.getRows()}
+                    </div>
+                </div>
+                <div className="col col-md-6">
+                    {this.getChart()}
+                </div>
+            </React.Fragment>
+        );
+    };
 
     private getChart = () => {
         const { data } = this.props;

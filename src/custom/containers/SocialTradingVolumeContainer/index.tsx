@@ -74,43 +74,55 @@ export type SocialTradingVolumeContainerProps = ReduxProps & SocialTradingVolume
 
 class SocialTradingVolume extends React.Component<SocialTradingVolumeContainerProps> {
     public render() {
-        const {
-            colorTheme,
-            data,
-        } = this.props;
-
         return (
             <div className="col-12 pg-trading-volume-chart px-0">
                 <div className="col-12  pg-trading-volume-chart__header">
                     Trading Volume
                 </div>
-                <div className="col-12  pg-trading-volume-chart__content">
-                    <ResponsiveContainer width="100%" height={200}>
-                        <LineChart
-                            data={data}
-                            margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
-                        >
-                            <XAxis dataKey="name" />
-                            <YAxis />
-                            <Tooltip
-                                isAnimationActive={false}
-                                cursor={{stroke: 'rgba(255, 255, 255, 0.1)'}}
-                                content={<CustomTooltip external={data} />}
-                            />
-                            <CartesianGrid vertical={false} style={{ background: 'rbga(255, 255, 255, 0.2)'}} />
-                            <Line
-                                dot={false}
-                                type="linear"
-                                dataKey="volume"
-                                stroke="#8d75f8"
-                                activeDot={{r: 4, fill: colorTheme === 'light' ? '#f4f4f6' : '#101032', stroke: '#8d75f8', strokeWidth: 2}}
-                            />
-                        </LineChart>
-                    </ResponsiveContainer>
+                <div className="col-12 pg-trading-volume-chart__content mb-4">
+                    {this.getChartBody()}
                 </div>
             </div>
         );
     }
+
+    private getChartBody = () => {
+        const {
+            colorTheme,
+            data,
+        } = this.props;
+
+        if (!data.length) {
+            return (
+                <div className="mt-2">No data yet</div>
+            );
+        }
+
+        return (
+            <ResponsiveContainer width="100%" height={200}>
+                <LineChart
+                    data={data}
+                    margin={{ top: 20, right: 30, left: 0, bottom: 0 }}
+                >
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip
+                        isAnimationActive={false}
+                        cursor={{stroke: 'rgba(255, 255, 255, 0.1)'}}
+                        content={<CustomTooltip external={data} />}
+                    />
+                    <CartesianGrid vertical={false} style={{ background: 'rbga(255, 255, 255, 0.2)'}} />
+                    <Line
+                        dot={false}
+                        type="linear"
+                        dataKey="volume"
+                        stroke="#8d75f8"
+                        activeDot={{r: 4, fill: colorTheme === 'light' ? '#f4f4f6' : '#101032', stroke: '#8d75f8', strokeWidth: 2}}
+                    />
+                </LineChart>
+            </ResponsiveContainer>
+        );
+    };
 }
 
 const mapStateToProps: MapStateToProps<ReduxProps, {}, RootState> = state => ({

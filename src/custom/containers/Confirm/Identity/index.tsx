@@ -196,6 +196,7 @@ class IdentityComponent extends React.Component<Props, IdentityState> {
                                     list={dataYears}
                                     onSelect={onSelectYear}
                                     placeholder={this.translate('page.body.kyc.identity.year')}
+                                    contentUneditable={true}
                                 />
                             </div>
                             <div className="pg-confirm__content-identity-dropdown">
@@ -204,6 +205,7 @@ class IdentityComponent extends React.Component<Props, IdentityState> {
                                     list={dataMonths}
                                     onSelect={onSelectMonth}
                                     placeholder={this.translate('page.body.kyc.identity.month')}
+                                    contentUneditable={true}
                                 />
                             </div>
                             <div className="pg-confirm__content-identity-dropdown">
@@ -212,6 +214,7 @@ class IdentityComponent extends React.Component<Props, IdentityState> {
                                     list={dataDays}
                                     onSelect={onSelectDay}
                                     placeholder={this.translate('page.body.kyc.identity.day')}
+                                    contentUneditable={true}
                                 />
                             </div>
                         </div>
@@ -226,6 +229,7 @@ class IdentityComponent extends React.Component<Props, IdentityState> {
                                 list={dataNationalities}
                                 onSelect={onSelectNationality}
                                 placeholder={this.translate('page.body.kyc.identity.nationality')}
+                                contentUneditable={true}
                             />
                         </div>
                         <div className="pg-confirm__content-identity-col-row">
@@ -238,6 +242,7 @@ class IdentityComponent extends React.Component<Props, IdentityState> {
                                     list={dataCountries}
                                     onSelect={onSelectCountry}
                                     placeholder={this.translate('page.body.kyc.identity.CoR')}
+                                    contentUneditable={true}
                                 />
                             </div>
                         </div>

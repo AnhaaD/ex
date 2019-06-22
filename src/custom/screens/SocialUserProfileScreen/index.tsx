@@ -8,7 +8,11 @@ import { RouterProps } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import close = require('../../../assets/images/close.svg');
 import { Modal } from '../../../components';
-import { RootState } from '../../../modules';
+import {
+    RootState,
+    selectSocialUsersMe,
+    SocialUserMeInterface,
+} from '../../../modules';
 import image = require('../../assets/images/default.png');
 import facebook = require('../../assets/images/facebook.svg');
 import telegram = require('../../assets/images/telegram.svg');
@@ -21,6 +25,7 @@ import {
 } from '../../containers';
 import {
     createSubscription,
+    getProfileMe,
     getUserProfile,
     selectSocialProfileUser,
     SubscribedUserPerformanceInterface,
@@ -38,12 +43,14 @@ interface SocialUserProfileScreenProps extends RouterProps {
 
 interface ReduxProps {
     user: SubscribedUserProfileInterface;
+    me?: SocialUserMeInterface;
 }
 
 interface DispatchProps {
     createSubscription: typeof createSubscription;
     getUserProfile: typeof getUserProfile;
     unsubscribeSubscription: typeof unsubscribeSubscription;
+    getProfileMe: typeof getProfileMe;
 }
 
 interface SocialUserProfileScreenState {
@@ -75,6 +82,7 @@ class SocialUserProfileScreen extends React.Component<Props, SocialUserProfileSc
             nickname: this.props.match.params.nickname,
             period: 'daily',
         });
+        this.props.getProfileMe();
     }
 
     public render() {
@@ -153,8 +161,11 @@ class SocialUserProfileScreen extends React.Component<Props, SocialUserProfileSc
     };
 
     private getSubscriptionButton = () => {
-        const { user } = this.props;
+        const { user, me } = this.props;
 
+        if (user && me && user.nickname === me.nickname) {
+            return null;
+        }
         if (user && user.performances) {
             return (
                 <div className="col-2 px-0 mx-0 d-inline-block subscribe-button" onClick={this.unsubscribeSubscription}>
@@ -208,6 +219,7 @@ class SocialUserProfileScreen extends React.Component<Props, SocialUserProfileSc
 
             return data;
         }
+
         return [];
     };
 
@@ -217,7 +229,7 @@ class SocialUserProfileScreen extends React.Component<Props, SocialUserProfileSc
         const data = user && user.performances && user.performances.map(item => {
             return {
                 name: (item.date || item.week || item.month) as string,
-                volume: item.traded_volume,
+                volume: (item && item.traded_volume) ? item.traded_volume : 0,
             };
         });
 
@@ -359,12 +371,14 @@ class SocialUserProfileScreen extends React.Component<Props, SocialUserProfileSc
 
 const mapStateToProps = (state: RootState): ReduxProps => ({
     user: selectSocialProfileUser(state),
+    me: selectSocialUsersMe(state),
 });
 
 const mapDispatchToProps: MapDispatchToPropsFunction<DispatchProps, {}> = dispatch => ({
     createSubscription: payload => dispatch(createSubscription(payload)),
     getUserProfile: payload => dispatch(getUserProfile(payload)),
     unsubscribeSubscription: payload => dispatch(unsubscribeSubscription(payload)),
+    getProfileMe: () => dispatch(getProfileMe()),
 });
 
 // tslint:disable-next-line:no-any

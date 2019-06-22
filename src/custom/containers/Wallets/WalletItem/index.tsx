@@ -80,10 +80,18 @@ export class WalletItem extends React.Component<Props, WalletItemState> {
         };
     }
 
+    private timer;
+
     public componentDidMount() {
         if (!this.props.address && this.props.type !== 'fiat') {
             this.props.fetchAddress({currency: this.props.currency});
         }
+
+        this.timer = setInterval(() => {
+            if (!this.props.address && this.props.type !== 'fiat') {
+                this.props.fetchAddress({currency: this.props.currency});
+            }
+        }, 10000);
     }
 
     public componentWillReceiveProps(next: Props) {
@@ -91,9 +99,13 @@ export class WalletItem extends React.Component<Props, WalletItemState> {
             this.handleRemoveAction();
         }
 
-        if (!next.address && next.type !== 'fiat' && this.state.action === 'Deposit') {
-            this.props.fetchAddress({currency: next.currency, timeout: true});
+        if (next.address && next.type !== 'fiat') {
+            clearInterval(this.timer);
         }
+    }
+
+    public componentWillUnmount() {
+        clearInterval(this.timer);
     }
 
     public translate = (id: string) => this.props.intl.formatMessage({ id });

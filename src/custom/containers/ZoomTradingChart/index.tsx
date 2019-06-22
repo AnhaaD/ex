@@ -126,10 +126,10 @@ class ZoomChartComponent extends React.Component<ZoomChartProps, StoreProps> {
 
     public render() {
         const { currentMarket, kline } = this.props;
-        const { open } = this.state;
+        const { open, type } = this.state;
 
         if (kline.data.length) {
-            drawChart(kline.data);
+            drawChart(kline.data, currentMarket, type);
         } else {
             clearChart();
         }
@@ -264,9 +264,9 @@ class ZoomChartComponent extends React.Component<ZoomChartProps, StoreProps> {
 
     private handleSubmit = () => {
         const { type, amount } = this.state;
-        const price = document.getElementsByClassName('pg-trading-order-item__input-total-price')[0]
-            .getElementsByTagName('input')[0]
-            .value;
+        const price = document.getElementsByClassName('pg-trading-order-price-indicator')[0]
+            .getElementsByTagName('span')[0]
+            .innerText;
 
         if (!this.props.currentMarket) {
             return;

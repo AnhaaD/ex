@@ -14,7 +14,7 @@ export const en = {
     'page.header.navbar.signUp.termsAndConditions': 'Terms & Conditions',
     'page.header.navbar.register': 'Register',
     'page.header.navbar.social': 'Social',
-    'page.header.navbar.leaderboards': 'Leaderboards',
+    'page.header.navbar.leaderboards': 'Leaderboard',
     'page.header.navbar.subscriptions': 'Subscriptions',
     'page.header.navbar.myProfile': 'My Profile',
     'page.header.navbar.balances': 'Balances',

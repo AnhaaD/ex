@@ -13,7 +13,7 @@ import {
 import { VALUATION_CURRENCY } from '../../constants';
 
 interface WithdrawProps {
-    available: number;
+    available: string;
     className?: string;
     currency: string;
     fee: number;
@@ -178,7 +178,7 @@ class Withdraw extends React.Component<Props, WithdrawState> {
                             className="cr-withdraw__button"
                             label={intl.formatMessage({ id: 'page.body.wallets.withdraw.content.button' }) || 'WITHDRAW'}
                             onClick={this.handleClick}
-                            disabled={+total <= 0 || !rid.length}
+                            disabled={!rid.length || +total <= 0 || +amount > +available}
                         />
                     </div>
                 </div>
@@ -212,7 +212,7 @@ class Withdraw extends React.Component<Props, WithdrawState> {
         if (convertedValue.match(condition)) {
             this.setState({
                 amount: convertedValue,
-                total: Decimal.format(+convertedValue - fee, fixed),
+                total: (+convertedValue - fee).toFixed(fixed),
             });
         }
     };

@@ -40,7 +40,6 @@ export interface WalletsAddressFetch {
     type: typeof WALLETS_ADDRESS_FETCH;
     payload: {
         currency: string;
-        timeout?: boolean;
     };
 }
 

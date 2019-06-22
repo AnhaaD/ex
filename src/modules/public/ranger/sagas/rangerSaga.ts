@@ -1,4 +1,4 @@
-import { EventChannel, eventChannel } from 'redux-saga';
+import { Channel,EventChannel, eventChannel } from 'redux-saga';
 // tslint:disable-next-line no-submodule-imports
 import { all, call, cancel, delay, fork, put, race, select, take, takeEvery } from 'redux-saga/effects';
 import { rangerUrl } from '../../../../api';
@@ -179,12 +179,12 @@ const switchMarket = () => {
     };
 };
 
-function* watchDisconnect(socket: WebSocket, channel: EventChannel<{}>) {
+function* watchDisconnect(socket: WebSocket, channel: Channel<{}>) {
     yield take(RANGER_DISCONNECT_FETCH);
     socket.close();
 }
 
-function* bindSocket(channel: EventChannel<{}>, socket: WebSocket, buffer: RangerBuffer) {
+function* bindSocket(channel: Channel<{}>, socket: WebSocket, buffer: RangerBuffer) {
     return yield all([call(reader, channel), call(writter, socket, buffer), call(watchDisconnect, socket, channel)]);
 }
 

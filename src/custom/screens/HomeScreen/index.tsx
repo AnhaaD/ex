@@ -10,7 +10,7 @@ class HomeScreenComponent extends React.Component {
                 <div className="container">
                     <div className="title-page">
                         <h1 className="title-page__text home-title-page">
-                            Most Advanced Crypto Trading Platform
+                            Welcome to the Libra Exchange crypto trading platform
                         </h1>
                         <ul className="home-page-list">
                             <li className="home-page-list__item">

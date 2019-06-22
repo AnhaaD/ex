@@ -33,16 +33,16 @@ class AdvantageCardsComponent extends React.Component {
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div className="home-down-box">
                                 <img className="home-down-box__image" src={info3} alt="" width="42" height="46" />
-                                <h4 className="home-down-box__title">WORLD COVERAGE</h4>
-                                <span className="home-down-box__text">Providing services in 99% countries around the globe</span>
+                                <h4 className="home-down-box__title">INTERNATIONAL COVERAGE</h4>
+                                <span className="home-down-box__text">Providing Services Worldwide and open to anyone that can access our trading platform.</span>
                             </div>
                         </div>
 
                         <div className="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div className="home-down-box">
                                 <img className="home-down-box__image" src={info4} alt="" width="42" height="46" />
-                                <h4 className="home-down-box__title">COMPETITIVE COMMISSIONS</h4>
-                                <span className="home-down-box__text">Reasonable trading fees for takers and makers, special conditions for high volume traders, strong offers for market makers.</span>
+                                <h4 className="home-down-box__title">ENJOY ANONYMITY</h4>
+                                <span className="home-down-box__text">Create an account and trade happily without the imposition of KYC.</span>
                             </div>
                         </div>
                     </div>

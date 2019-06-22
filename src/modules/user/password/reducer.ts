@@ -9,10 +9,10 @@ import {
 } from './constants';
 
 export interface PasswordState extends CommonState {
-    loading?: boolean;
     forgotPasswordRequested: boolean;
     forgotPasswordChanged: boolean;
     forgotPasswordError?: CommonError;
+    loading?: boolean;
 }
 
 const initialState: PasswordState = {
